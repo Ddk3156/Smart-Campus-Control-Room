@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Impact Lab · Smart Campus{% endblock %}
+{% block content %}
+<section class="page-hero page-hero-sim module-hero" data-tilt>
+  <div class="module-hero-copy">
+    <p class="eyebrow mono">Module 02</p>
+    <h1 class="page-title">Future Impact Lab</h1>
+    <p class="page-sub muted">Move policy levers and simulate how a cleaner campus strategy changes next year’s waste trajectory.</p>
+  </div>
+  <div class="module-hero-stage">
+    <img class="module-art" src="{{ url_for('static', filename='earth-protection-bg.svg') }}" alt="Glowing earth protection illustration" />
+    <div class="page-hero-badge">
+      <span class="mono">12 MONTHS</span>
+      <strong>Strategy sandbox</strong>
+    </div>
+    <div class="module-float-card module-float-main reveal-up">
+      <span class="module-chip mono">Scenario pulse</span>
+      <strong id="sim-hero-score">Balanced</strong>
+      <p class="muted small">Realtime response to policy lever movement</p>
+    </div>
+    <div class="module-float-card module-float-side reveal-up" style="--delay:.08s">
+      <span class="module-chip mono">Adoption</span>
+      <div class="radial-pill">
+        <span id="sim-adoption-score">48%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block sim-story reveal-up">
+  <div class="card sim-stats-ribbon">
+    <div class="sim-ribbon-copy">
+      <p class="eyebrow mono">Outcome scan</p>
+      <h2 class="card-title">Projected strategy impact</h2>
+    </div>
+    <div class="sim-ribbon-stats" id="sim-stats">
+      <div class="stat-card stat-card-compact">
+        <p class="stat-label mono">Waste avoided</p>
+        <p class="stat-value mono" id="st-waste">—</p>
+      </div>
+      <div class="stat-card stat-card-compact">
+        <p class="stat-label mono">CO2 saved</p>
+        <p class="stat-value mono" id="st-co2">—</p>
+      </div>
+      <div class="stat-card stat-card-compact">
+        <p class="stat-label mono">Trees equivalent</p>
+        <p class="stat-value mono" id="st-trees">—</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sim-layout sim-layout-custom">
+    <div class="card chart-card sim-chart-card elevated-card module-panel-soft sim-chart-stage">
+      <div class="chart-head">
+        <div>
+          <h2 class="card-title">12-month campus waste mass</h2>
+          <p class="muted small">Compare worst-case growth, the current trajectory, and an improved scenario.</p>
+        </div>
+        <span class="chart-chip mono">Policy simulator</span>
+      </div>
+      <div class="chart-wrap loading" id="sim-chart-wrap">
+        <canvas id="chart-simulator"></canvas>
+      </div>
+    </div>
+
+    <div class="card sim-panel module-shell sim-controls">
+    <div class="panel-header">
+      <div>
+        <p class="eyebrow mono">Levers</p>
+        <h2 class="card-title">Policy controls</h2>
+      </div>
+      <button type="button" class="btn btn-ghost btn-small" id="sim-reset">Reset</button>
+    </div>
+    <div class="preset-row">
+      <button type="button" class="preset-chip is-active" data-sim-preset="balanced">Balanced</button>
+      <button type="button" class="preset-chip" data-sim-preset="aggressive">Aggressive</button>
+      <button type="button" class="preset-chip" data-sim-preset="cautious">Cautious</button>
+    </div>
+    <div class="slider-field">
+      <div class="slider-label-row">
+        <label for="sim-recycle">Recycling lift</label>
+        <span class="mono readout" id="rv-recycle">30%</span>
+      </div>
+      <input type="range" id="sim-recycle" min="0" max="80" step="1" value="30" />
+      <div class="range-meta"><span>0%</span><span>80%</span></div>
+    </div>
+    <div class="slider-field">
+      <div class="slider-label-row">
+        <label for="sim-reduce">Waste reduction</label>
+        <span class="mono readout" id="rv-reduce">20%</span>
+      </div>
+      <input type="range" id="sim-reduce" min="0" max="60" step="1" value="20" />
+      <div class="range-meta"><span>0%</span><span>60%</span></div>
+    </div>
+    <div class="insight-banner">
+      <p class="mono insight-label">Scenario note</p>
+      <p class="insight-value" id="sim-scenario-name">Balanced campus upgrade</p>
+      <p class="muted small" id="sim-scenario-copy">A moderate plan that raises recycling while steadily reducing overall waste generation.</p>
+    </div>
+  </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='simulator.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Vision Scan · Smart Campus{% endblock %}
+{% block content %}
+<section class="page-hero page-hero-vision module-hero" data-tilt>
+  <div class="module-hero-copy">
+    <p class="eyebrow mono">Module 04</p>
+    <h1 class="page-title">Vision Scan</h1>
+    <p class="page-sub muted">Upload a campus image and get a quick sustainability impact reading with action suggestions for the visible scene.</p>
+  </div>
+  <div class="module-hero-stage">
+    <img class="module-art" src="{{ url_for('static', filename='earth-protection-bg.svg') }}" alt="Glowing earth protection illustration" />
+    <div class="page-hero-badge">
+      <span class="mono">UPLOAD</span>
+      <strong>Photo-driven impact preview</strong>
+    </div>
+    <div class="module-float-card module-float-main reveal-up">
+      <span class="module-chip mono">Visual AI</span>
+      <strong id="vision-status-label">Ready to scan</strong>
+      <p class="muted small">Drop a photo to estimate likely waste impact and cleanup priority.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-block vision-layout reveal-up">
+  <div class="card vision-upload-shell">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow mono">Input</p>
+        <h2 class="card-title">Upload campus image</h2>
+      </div>
+    </div>
+    <label class="vision-dropzone" for="vision-image">
+      <input type="file" id="vision-image" accept="image/*" hidden />
+      <span class="vision-drop-title">Choose image or drag it here</span>
+      <span class="muted">Supports photos of bins, litter zones, labs, corridors, and campus spaces.</span>
+    </label>
+    <div class="vision-preview-shell" id="vision-preview-shell" hidden>
+      <img id="vision-preview" class="vision-preview" alt="Uploaded preview" />
+    </div>
+    <button type="button" class="btn btn-primary" id="vision-analyze-btn">Analyze image</button>
+  </div>
+
+  <div class="vision-results-stack">
+    <div class="card vision-summary-card">
+      <p class="eyebrow mono">Scene result</p>
+      <h2 class="vision-main-title" id="vision-result-title">No analysis yet</h2>
+      <p class="muted" id="vision-result-copy">Upload an image to generate impact insight, material mix, and suggestions.</p>
+      <div class="vision-score-ring">
+        <div class="vision-score-core">
+          <strong id="vision-impact-score">0</strong>
+          <span>impact score</span>
+        </div>
+      </div>
+      <div class="vision-meta-grid">
+        <div class="mini-insight">
+          <span class="metric-label mono">Confidence</span>
+          <strong id="vision-confidence">—</strong>
+        </div>
+        <div class="mini-insight">
+          <span class="metric-label mono">Severity</span>
+          <strong id="vision-severity">—</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="card vision-metrics-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow mono">Indicators</p>
+          <h2 class="card-title">Visual signals</h2>
+        </div>
+      </div>
+      <div class="vision-metrics-grid">
+        <div class="metric-card"><span class="metric-label mono">Brightness</span><strong class="metric-value" id="metric-brightness">—</strong></div>
+        <div class="metric-card"><span class="metric-label mono">Texture</span><strong class="metric-value" id="metric-texture">—</strong></div>
+        <div class="metric-card"><span class="metric-label mono">Green signal</span><strong class="metric-value" id="metric-green">—</strong></div>
+        <div class="metric-card"><span class="metric-label mono">Handling risk</span><strong class="metric-value" id="metric-risk">—</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="card vision-impact-card">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow mono">Impact mix</p>
+        <h2 class="card-title">Estimated material profile</h2>
+      </div>
+    </div>
+    <div class="chart-wrap" id="vision-chart-wrap">
+      <canvas id="chart-vision"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="card vision-actions-card">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow mono">Actions</p>
+        <h2 class="card-title">Recommended next steps</h2>
+      </div>
+    </div>
+    <ul class="vision-actions-list" id="vision-actions-list">
+      <li class="muted">No suggestions yet. Analyze an image to populate this list.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="toast mono" id="vision-toast" role="status"></div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='vision.js') }}"></script>
+{% endblock %}

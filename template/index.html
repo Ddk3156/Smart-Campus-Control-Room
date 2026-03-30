@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block body_class %}page-home{% endblock %}
+{% block content %}
+<section class="hero hero-dashboard">
+  <div class="hero-grid"></div>
+  <div class="hero-aurora hero-aurora-a"></div>
+  <div class="hero-aurora hero-aurora-b"></div>
+  <div class="hero-copy">
+    <p class="eyebrow mono">Campus sustainability command center</p>
+    <h1 class="hero-title">Run your smart campus like a living product dashboard.</h1>
+    <p class="hero-tagline">
+      Track waste pressure, simulate interventions, and coordinate cleaner commutes through a calmer, faster, more immersive interface.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ url_for('waste_page') }}">Open Waste Intelligence</a>
+      <a class="btn btn-ghost" href="{{ url_for('simulator_page') }}">Try Impact Lab</a>
+    </div>
+    <div class="hero-proof reveal-up">
+      <div class="proof-item">
+        <span class="proof-kicker mono">Live systems</span>
+        <strong>3 connected modules</strong>
+      </div>
+      <div class="proof-item">
+        <span class="proof-kicker mono">Interaction</span>
+        <strong>Realtime UI feedback</strong>
+      </div>
+      <div class="proof-item">
+        <span class="proof-kicker mono">Visual style</span>
+        <strong>Glass panels + motion</strong>
+      </div>
+    </div>
+  </div>
+  <div class="hero-panel hero-scene" data-tilt>
+    <img class="hero-art" src="{{ url_for('static', filename='earth-protection-bg.svg') }}" alt="Glowing earth protection illustration" />
+    <div class="hero-orbit"></div>
+    <div class="floating-card floating-card-main reveal-up">
+      <div class="floating-topline">
+        <span class="status-dot"></span>
+        <span class="mono">System pulse</span>
+      </div>
+      <p class="hero-stat-value">84%</p>
+      <p class="muted small">Intervention readiness across campus services</p>
+      <div class="mini-chart-bars" aria-hidden="true">
+        <span style="--bar-h: 42px"></span>
+        <span style="--bar-h: 68px"></span>
+        <span style="--bar-h: 50px"></span>
+        <span style="--bar-h: 88px"></span>
+        <span style="--bar-h: 60px"></span>
+        <span style="--bar-h: 96px"></span>
+      </div>
+    </div>
+    <div class="floating-card floating-card-side reveal-up" style="--delay: .08s">
+      <p class="hero-stat-label mono">Waste pulse</p>
+      <div class="ring-meter">
+        <div class="ring-meter-core">
+          <strong>12%</strong>
+          <span>drop possible</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-mini-grid reveal-up" style="--delay: .14s">
+      <div class="hero-card hero-chip-card">
+        <p class="hero-stat-label mono">Focus</p>
+        <p class="hero-stat-value small-value">Realtime response</p>
+      </div>
+      <div class="hero-card hero-chip-card">
+        <p class="hero-stat-label mono">Movement</p>
+        <p class="hero-stat-value small-value">Animated insights</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="kpi-strip">
+    <div class="kpi-chip">
+      <span class="kpi-label mono">Waste</span>
+      <strong>Threshold-aware dashboards</strong>
+    </div>
+    <div class="kpi-chip">
+      <span class="kpi-label mono">Simulation</span>
+      <strong>12-month intervention modeling</strong>
+    </div>
+    <div class="kpi-chip">
+      <span class="kpi-label mono">Mobility</span>
+      <strong>Carpool matching with impact stats</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow mono">Modules</p>
+      <h2 class="section-title">Explore the campus systems</h2>
+    </div>
+  </div>
+  <div class="feature-grid">
+    <a href="{{ url_for('waste_page') }}" class="feature-card feature-card-waste">
+      <span class="feature-tag mono">Waste Intelligence</span>
+      <h3 class="feature-title">See pressure points, forecasts, and recovery actions.</h3>
+      <p class="muted">Use live sliders, compare outcomes, and identify the stream that needs attention first.</p>
+      <span class="feature-cta mono">Open dashboard</span>
+    </a>
+    <a href="{{ url_for('simulator_page') }}" class="feature-card feature-card-sim">
+      <span class="feature-tag mono">Impact Lab</span>
+      <h3 class="feature-title">Test what happens if recycling and reduction efforts improve.</h3>
+      <p class="muted">Move the levers and see how annual waste totals and environmental savings shift instantly.</p>
+      <span class="feature-cta mono">Run simulation</span>
+    </a>
+    <a href="{{ url_for('carpool_page') }}" class="feature-card feature-card-carpool">
+      <span class="feature-tag mono">Mobility Hub</span>
+      <h3 class="feature-title">Match riders and surface collective savings in one flow.</h3>
+      <p class="muted">Search by origin, open contact details, and review the shared CO2 and fuel impact.</p>
+      <span class="feature-cta mono">Find carpools</span>
+    </a>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="story-grid">
+    <div class="card ambient-card">
+      <p class="eyebrow mono">Why this UI works</p>
+      <h3 class="card-display-title">Fast to scan. Clear to act on.</h3>
+      <p class="muted">The interface groups inputs, insight, and outcomes together so staff and students can move from “what is happening” to “what should we do” without leaving the page.</p>
+    </div>
+    <div class="card timeline-card">
+      <p class="eyebrow mono">Flow</p>
+      <div class="timeline-row"><span class="timeline-step">01</span><span>Measure the current campus state</span></div>
+      <div class="timeline-row"><span class="timeline-step">02</span><span>Model the next few weeks or months</span></div>
+      <div class="timeline-row"><span class="timeline-step">03</span><span>Choose the highest-impact intervention</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="showcase-panel">
+    <div class="showcase-copy">
+      <p class="eyebrow mono">Design language</p>
+      <h2 class="section-title">A softer campus theme with product-grade motion.</h2>
+      <p class="muted">This pass keeps the sustainability palette, but shifts the structure toward floating surfaces, moving light, and confidence-building visual hierarchy.</p>
+    </div>
+    <div class="showcase-stack" data-tilt>
+      <div class="showcase-card showcase-card-back"></div>
+      <div class="showcase-card showcase-card-mid"></div>
+      <div class="showcase-card showcase-card-front">
+        <div class="showcase-rows">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

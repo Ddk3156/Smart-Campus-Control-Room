@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}Mobility Hub · Smart Campus{% endblock %}
+{% block content %}
+<section class="page-hero page-hero-carpool module-hero" data-tilt>
+  <div class="module-hero-copy">
+    <p class="eyebrow mono">Module 03</p>
+    <h1 class="page-title">Smart Carpool Matching</h1>
+    <p class="page-sub muted">Search your route corridor, reveal nearby ride options, and compare the shared environmental benefit of moving together.</p>
+  </div>
+  <div class="module-hero-stage">
+    <img class="module-art" src="{{ url_for('static', filename='earth-protection-bg.svg') }}" alt="Glowing earth protection illustration" />
+    <div class="page-hero-badge">
+      <span class="mono">MOBILITY</span>
+      <strong>Campus-bound matching</strong>
+    </div>
+    <div class="module-float-card module-float-main reveal-up">
+      <span class="module-chip mono">Network value</span>
+      <strong id="cp-hero-score">Ride cluster</strong>
+      <p class="muted small">Collective savings grow as corridors converge toward campus</p>
+    </div>
+    <div class="module-float-card module-float-side reveal-up" style="--delay:.08s">
+      <span class="module-chip mono">Routes</span>
+      <div class="route-lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block mobility-flow reveal-up">
+  <div class="card carpool-form-card module-shell mobility-search">
+    <div class="panel-header">
+      <div>
+        <p class="eyebrow mono">Search</p>
+        <h2 class="card-title">Plan a shared trip</h2>
+      </div>
+    </div>
+    <div class="preset-row">
+      <button type="button" class="preset-chip" data-origin="Pimpri">Pimpri</button>
+      <button type="button" class="preset-chip" data-origin="Chinchwad">Chinchwad</button>
+      <button type="button" class="preset-chip" data-origin="Nigdi">Nigdi</button>
+      <button type="button" class="preset-chip" data-origin="Bopkhel">Bopkhel</button>
+    </div>
+    <div class="carpool-row">
+      <div class="field-grow">
+        <label for="cp-origin">Start location</label>
+        <input type="text" id="cp-origin" class="text-input" placeholder="e.g. Pimpri, Chinchwad, Nigdi" autocomplete="off" />
+      </div>
+      <div class="field-dest">
+        <span class="label-static mono">Destination</span>
+        <div class="dest-pill mono" id="cp-dest-label">DYPCOE Akurdi</div>
+      </div>
+      <div class="field-action">
+        <button type="button" class="btn btn-primary" id="cp-find">Find matches</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobility-side">
+    <div class="grid-3 mobility-summary-grid" id="cp-summary">
+      <div class="card stat-card">
+        <p class="stat-label mono">Matches found</p>
+        <p class="stat-value mono" id="cp-match-count">0</p>
+        <p class="muted small">available rides for your origin</p>
+      </div>
+      <div class="card stat-card">
+        <p class="stat-label mono">Fuel savings</p>
+        <p class="stat-value mono" id="cp-fuel-total">—</p>
+        <p class="muted small">estimated liters per month</p>
+      </div>
+      <div class="card stat-card">
+        <p class="stat-label mono">CO2 avoided</p>
+        <p class="stat-value mono" id="cp-co2-total">—</p>
+        <p class="muted small">estimated kilograms per month</p>
+      </div>
+    </div>
+
+    <section class="section-block reveal-up mobility-impact-shell" id="cp-impact-section" hidden>
+      <div class="card chart-card elevated-card module-panel-soft">
+        <div class="chart-head">
+          <div>
+            <h2 class="card-title">Collective impact</h2>
+            <p class="muted small">Aggregate environmental value if the listed rides are coordinated consistently.</p>
+          </div>
+          <span class="chart-chip mono">Monthly estimate</span>
+        </div>
+        <div class="chart-wrap" id="cp-chart-wrap">
+          <canvas id="chart-carpool"></canvas>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="section-block reveal-up mobility-results-shell" id="cp-results-section" hidden>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow mono">Matches</p>
+      <h2 class="section-title">Available ride partners</h2>
+    </div>
+  </div>
+  <div id="cp-cards" class="results-grid"></div>
+</section>
+
+<section class="section-block reveal-up" id="cp-empty" hidden></section>
+
+<div class="toast mono" id="cp-toast" role="status"></div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='carpool.js') }}"></script>
+{% endblock %}

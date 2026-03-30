@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Waste Intelligence · Smart Campus{% endblock %}
+{% block content %}
+<section class="page-hero page-hero-waste module-hero" data-tilt>
+  <div class="module-hero-copy">
+    <p class="eyebrow mono">Module 01</p>
+    <h1 class="page-title">Waste Intelligence</h1>
+    <p class="page-sub muted">Tune campus waste inputs and watch the interface recalculate risk, trends, and recommended action paths in one place.</p>
+  </div>
+  <div class="module-hero-stage">
+    <img class="module-art" src="{{ url_for('static', filename='earth-protection-bg.svg') }}" alt="Glowing earth protection illustration" />
+    <div class="page-hero-badge">
+      <span class="mono">LIVE</span>
+      <strong>Forecast + intervention board</strong>
+    </div>
+    <div class="module-float-card module-float-main reveal-up">
+      <span class="module-chip mono">Recovery index</span>
+      <strong id="waste-recovery-score">72%</strong>
+      <p class="muted small">Estimated recovery potential from the current waste mix</p>
+    </div>
+    <div class="module-float-card module-float-side reveal-up" style="--delay:.08s">
+      <span class="module-chip mono">Streams</span>
+      <div class="spark-stack" aria-hidden="true">
+        <span style="--spark:72%"></span>
+        <span style="--spark:94%"></span>
+        <span style="--spark:38%"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block waste-board reveal-up">
+  <div class="card chart-card elevated-card waste-chart-stage">
+    <div class="chart-head">
+      <div>
+        <h2 class="card-title">Trend and projection</h2>
+        <p class="muted small">Solid lines show recent history. Dashed lines project the next seven days.</p>
+      </div>
+      <span class="chart-chip mono">14-day view</span>
+    </div>
+    <div class="chart-wrap" id="prediction-wrap">
+      <canvas id="chart-prediction" height="120"></canvas>
+    </div>
+  </div>
+
+  <div class="card control-panel module-shell waste-controls">
+    <div class="panel-header">
+      <div>
+        <p class="eyebrow mono">Inputs</p>
+        <h2 class="card-title">Campus waste load</h2>
+      </div>
+      <button type="button" class="btn btn-ghost btn-small" id="waste-reset">Reset defaults</button>
+    </div>
+    <div class="preset-row">
+      <button type="button" class="preset-chip is-active" data-preset="normal">Current</button>
+      <button type="button" class="preset-chip" data-preset="stress">Peak Event</button>
+      <button type="button" class="preset-chip" data-preset="optimized">Improved</button>
+    </div>
+    <div class="slider-grid">
+      <div class="slider-field">
+        <div class="slider-label-row">
+          <label for="sl-plastic">Plastic</label>
+          <span class="mono readout" id="rv-plastic">16 kg</span>
+        </div>
+        <input type="range" id="sl-plastic" min="0" max="40" step="0.1" value="16" />
+        <div class="range-meta"><span>0</span><span>40 kg</span></div>
+      </div>
+      <div class="slider-field">
+        <div class="slider-label-row">
+          <label for="sl-organic">Organic</label>
+          <span class="mono readout" id="rv-organic">39 kg</span>
+        </div>
+        <input type="range" id="sl-organic" min="0" max="80" step="0.1" value="39" />
+        <div class="range-meta"><span>0</span><span>80 kg</span></div>
+      </div>
+      <div class="slider-field">
+        <div class="slider-label-row">
+          <label for="sl-ewaste">E-waste</label>
+          <span class="mono readout" id="rv-ewaste">2 kg</span>
+        </div>
+        <input type="range" id="sl-ewaste" min="0" max="10" step="0.1" value="2" />
+        <div class="range-meta"><span>0</span><span>10 kg</span></div>
+      </div>
+    </div>
+    <div class="insight-banner" id="waste-focus-card">
+      <p class="mono insight-label">Priority stream</p>
+      <p class="insight-value" id="focus-type">Analyzing current inputs...</p>
+      <p class="muted small" id="focus-copy">The system will highlight the most urgent stream once the latest values are processed.</p>
+    </div>
+  </div>
+
+  <div class="panel-stack waste-side-panels">
+    <div class="card module-panel-soft">
+      <p class="eyebrow mono">Status strip</p>
+      <div class="status-strip" id="status-strip" aria-live="polite">
+        <span class="pill pill-placeholder muted mono">Loading status...</span>
+      </div>
+    </div>
+    <div class="card metric-grid module-panel-soft" id="waste-metrics">
+      <div class="metric-card">
+        <span class="metric-label mono">Plastic</span>
+        <strong class="metric-value" id="metric-plastic">16.0 kg</strong>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label mono">Organic</span>
+        <strong class="metric-value" id="metric-organic">39.0 kg</strong>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label mono">E-waste</span>
+        <strong class="metric-value" id="metric-ewaste">2.0 kg</strong>
+      </div>
+    </div>
+    <div class="card mini-insight-grid module-panel-soft">
+      <div class="mini-insight">
+        <span class="metric-label mono">Criticality</span>
+        <strong id="waste-criticality">Moderate</strong>
+      </div>
+      <div class="mini-insight">
+        <span class="metric-label mono">Target stream</span>
+        <strong id="waste-target-stream">Organic</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block reveal-up">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow mono">Recommendations</p>
+      <h2 class="section-title">Suggested campus actions</h2>
+    </div>
+  </div>
+  <div id="solutions-root" class="waste-solutions-zone"></div>
+</section>
+
+<section class="section-block comparison-section reveal-up" id="comparison-section" hidden>
+  <div class="comparison-head">
+    <div>
+      <p class="eyebrow mono">Scenario compare</p>
+      <h2 class="card-title">Before vs after intervention</h2>
+    </div>
+    <p class="mono accent" id="comparison-headline"></p>
+  </div>
+  <div class="compare-grid">
+    <div class="card chart-card">
+      <h3 class="chart-subtitle danger">Without coordinated action</h3>
+      <div class="chart-wrap" id="compare-left-wrap">
+        <canvas id="chart-compare-before"></canvas>
+      </div>
+    </div>
+    <div class="card chart-card">
+      <h3 class="chart-subtitle ok">With prioritized intervention</h3>
+      <div class="chart-wrap" id="compare-right-wrap">
+        <canvas id="chart-compare-after"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast mono" id="waste-toast" role="status" aria-live="polite"></div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='waste.js') }}"></script>
+{% endblock %}
