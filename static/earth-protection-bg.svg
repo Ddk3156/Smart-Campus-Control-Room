@@ -1,0 +1,59 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(790 270) rotate(130.543) scale(830 780)">
+      <stop stop-color="#0E6AFF" stop-opacity="0.28"/>
+      <stop offset="0.32" stop-color="#061A59" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#020616" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(760 242) rotate(90) scale(206 206)">
+      <stop stop-color="#4CFCC6" stop-opacity="0.9"/>
+      <stop offset="0.4" stop-color="#20E0A9" stop-opacity="0.46"/>
+      <stop offset="1" stop-color="#20E0A9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hand" x1="600" y1="494" x2="838" y2="734" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3FC0FF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#071A56" stop-opacity="0.6"/>
+    </linearGradient>
+    <filter id="blur" x="408" y="0" width="590" height="770" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="BackgroundImageFix" stdDeviation="30"/>
+      <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1_1"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1_1" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="#030817"/>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <ellipse cx="754" cy="254" rx="156" ry="156" fill="url(#halo)"/>
+  <g opacity="0.95">
+    <circle cx="754" cy="258" r="144" stroke="#38F0B8" stroke-width="3"/>
+    <circle cx="754" cy="258" r="132" stroke="#0FF3C3" stroke-opacity="0.25" stroke-width="1.5"/>
+    <path d="M716 164C681 179 660 213 654 254C647 302 676 351 726 373C710 342 707 305 723 266C737 230 767 196 808 173C782 161 746 155 716 164Z" fill="#42FFBB" fill-opacity="0.88"/>
+    <path d="M797 181C829 205 853 244 852 286C850 336 814 381 766 392C791 354 794 319 779 281C764 243 735 210 695 189C730 175 772 165 797 181Z" fill="#2DF4B4" fill-opacity="0.8"/>
+    <path d="M744 126C736 140 731 153 732 168C733 193 751 205 770 221C793 239 819 267 820 304C821 322 814 339 805 355C835 328 851 292 847 255C842 203 804 153 744 126Z" fill="#6AFFD3" fill-opacity="0.76"/>
+    <g fill="#7CFFE0" fill-opacity="0.95">
+      <circle cx="700" cy="188" r="4"/>
+      <circle cx="724" cy="213" r="4"/>
+      <circle cx="760" cy="198" r="4"/>
+      <circle cx="796" cy="222" r="4"/>
+      <circle cx="678" cy="230" r="4"/>
+      <circle cx="724" cy="254" r="4"/>
+      <circle cx="760" cy="242" r="4"/>
+      <circle cx="808" cy="250" r="4"/>
+      <circle cx="690" cy="278" r="4"/>
+      <circle cx="735" cy="296" r="4"/>
+      <circle cx="774" cy="282" r="4"/>
+      <circle cx="818" cy="296" r="4"/>
+      <circle cx="714" cy="330" r="4"/>
+      <circle cx="760" cy="340" r="4"/>
+      <circle cx="792" cy="324" r="4"/>
+    </g>
+  </g>
+  <g opacity="0.88" filter="url(#blur)">
+    <path d="M568 548C530 566 504 600 496 640C489 674 499 714 526 738C544 755 570 764 597 762C566 724 575 670 612 638C646 608 700 599 748 615C730 574 697 544 651 531C621 522 592 527 568 548Z" fill="url(#hand)"/>
+    <path d="M936 548C974 566 1000 600 1008 640C1015 674 1005 714 978 738C960 755 934 764 907 762C938 724 929 670 892 638C858 608 804 599 756 615C774 574 807 544 853 531C883 522 912 527 936 548Z" fill="url(#hand)"/>
+    <path d="M626 640C611 660 607 684 620 705C633 726 655 732 677 733C664 712 666 689 683 671C697 656 719 650 740 653C732 635 716 623 696 620C670 616 642 622 626 640Z" fill="#42B8FF" fill-opacity="0.78"/>
+    <path d="M878 640C893 660 897 684 884 705C871 726 849 732 827 733C840 712 838 689 821 671C807 656 785 650 764 653C772 635 788 623 808 620C834 616 862 622 878 640Z" fill="#42B8FF" fill-opacity="0.78"/>
+  </g>
+  <text x="166" y="414" fill="#2F8DFF" font-family="Arial, sans-serif" font-size="66" letter-spacing="1.5">PROTECTION</text>
+  <rect x="166" y="422" width="238" height="6" fill="#2F8DFF" fill-opacity="0.85"/>
+</svg>

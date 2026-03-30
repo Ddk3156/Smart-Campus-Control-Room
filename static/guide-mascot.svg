@@ -1,0 +1,19 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="40" y1="28" x2="134" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB65C"/>
+      <stop offset="0.52" stop-color="#FF8446"/>
+      <stop offset="1" stop-color="#20CDAE"/>
+    </linearGradient>
+  </defs>
+  <circle cx="90" cy="90" r="76" fill="#FFF4E5"/>
+  <path d="M92 26L132 42L148 88L124 136L82 154L42 132L30 88L48 44L92 26Z" fill="url(#g1)"/>
+  <path d="M62 74C66 64 74 58 84 58H96C108 58 118 66 120 78L124 96C126 108 120 120 108 124L92 130L72 126C60 122 52 110 54 98L62 74Z" fill="#1A2E2E"/>
+  <ellipse cx="72" cy="88" rx="8" ry="10" fill="#FFF9F0"/>
+  <ellipse cx="108" cy="88" rx="8" ry="10" fill="#FFF9F0"/>
+  <circle cx="72" cy="90" r="3.6" fill="#1A2E2E"/>
+  <circle cx="108" cy="90" r="3.6" fill="#1A2E2E"/>
+  <path d="M77 112C82 116 88 118 95 117C101 117 106 115 110 111" stroke="#FFF2DF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M58 52L74 34L80 56L58 52Z" fill="#FFCF7B"/>
+  <path d="M124 52L106 36L102 58L124 52Z" fill="#26D0B1"/>
+</svg>

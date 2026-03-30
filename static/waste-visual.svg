@@ -1,0 +1,19 @@
+<svg width="520" height="360" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a" x1="78" y1="52" x2="430" y2="286" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173436"/>
+      <stop offset="1" stop-color="#1FAF8D"/>
+    </linearGradient>
+  </defs>
+  <rect x="40" y="44" width="440" height="272" rx="36" fill="url(#a)"/>
+  <circle cx="126" cy="114" r="46" fill="#F09842" fill-opacity="0.24"/>
+  <circle cx="404" cy="246" r="54" fill="#FFF0DB" fill-opacity="0.16"/>
+  <rect x="84" y="100" width="152" height="164" rx="28" fill="#FFF7EB"/>
+  <rect x="106" y="126" width="108" height="12" rx="6" fill="#183735" fill-opacity="0.16"/>
+  <rect x="106" y="150" width="78" height="56" rx="18" fill="#1FCBA8"/>
+  <rect x="194" y="150" width="20" height="56" rx="10" fill="#F09842"/>
+  <rect x="106" y="220" width="108" height="16" rx="8" fill="#183735" fill-opacity="0.1"/>
+  <path d="M294 116L402 96L430 150L392 236L306 242L266 178L294 116Z" fill="#FFF0DB"/>
+  <path d="M326 144L376 132L396 170L378 206L334 212L308 180L326 144Z" fill="#163331"/>
+  <rect x="292" y="258" width="136" height="16" rx="8" fill="#FFF0DB" fill-opacity="0.52"/>
+</svg>
